@@ -1,0 +1,50 @@
+{
+  "name": "@danmasta/interpolate",
+  "version": "0.0.1",
+  "author": "Daniel Smith <dannmasta@gmail.com>",
+  "description": "Simple string interpolation helper",
+  "keywords": [
+    "template",
+    "interpolate",
+    "handlebars",
+    "cli"
+  ],
+  "main": "index.js",
+  "bin": {
+    "interpolate": "./bin/interpolate.js"
+  },
+  "files": [
+    "index.js",
+    "bin/**/*"
+  ],
+  "scripts": {
+    "test": "mocha tests",
+    "coverage": "nyc mocha tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danmasta/interpolate.git"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^5.15.1",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "gulp": "^4.0.0",
+    "mocha": "^6.0.2",
+    "nyc": "^13.3.0"
+  },
+  "engines": {
+    "npm": ">=3",
+    "node": ">=8"
+  },
+  "dependencies": {
+    "@danmasta/walk": "^2.0.1",
+    "lodash": "^4.17.11",
+    "minimist": "^1.2.0",
+    "mkdirp": "^0.5.1"
+  }
+}
