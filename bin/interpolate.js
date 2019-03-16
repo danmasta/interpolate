@@ -4,8 +4,7 @@ const minimist = require('minimist');
 const _ = require('lodash');
 const interpolate = require('../index');
 
-const help = `
-Usage:
+const help = `Usage:
 interpolate [...options]
 
 Options:
@@ -21,8 +20,7 @@ Options:
 --help    -h - Show this help message
 
 Examples:
-interpolate -i ./deploy -o ./build --src **/*.(yml|yaml)
-`;
+interpolate -i ./deploy -o ./build --src **/*.(yml|yaml)`;
 
 function getOptsFromArgv () {
 
@@ -58,16 +56,16 @@ function runWithArgv () {
 
     if (opts.help) {
 
-        process.stdout.write(help);
+        console.log(help);
 
     } else {
 
         if (opts.string) {
-            process.stdout.write(interpolator.parseStr(opts.string));
+            console.log(interpolator.parseStr(opts.string));
         } else if (opts.input && opts.output) {
             interpolator.parseFile(opts.input, opts.output, opts.src);
         } else {
-            process.stdout.write(help);
+            console.log(help);
         }
 
     }

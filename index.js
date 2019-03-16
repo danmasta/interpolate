@@ -61,7 +61,7 @@ class Interpolator {
         if (this.opts.throw) {
             throw new Error(str);
         } else if (this.opts.warn) {
-            process.stderr.write(str + '\n');
+            console.error(str);
         }
 
     }
