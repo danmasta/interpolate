@@ -1,33 +1,31 @@
 #!/usr/bin/env node
 
-const minimist = require('minimist');
 const _ = require('lodash');
-const interpolate = require('../index');
+const Interpolator = require('../lib/interpolator');
+const util = require('../lib/util');
 
 const help = `Usage:
 interpolate [...options]
 
 Options:
---input   -i - File or directory path to read from
---output  -o - Directory to save output files
---src        - Glob pattern to filter input files for parsing: **/*.yml
---string  -s - Text string to parse
---env     -e - If true will also interpolate from envrionment variables
---params  -p - Stringified json object, or string of key,value pairs: key1=1,key2=2
---warn    -w - If true will print out warnings for missing parameters
---throw   -t - If true will throw errors for missing parameters
---default -d - What value to use as default when a parameter is not found
---help    -h - Show this help message
+--input           -i - File or directory path to read from
+--output          -o - Directory to save output files
+--src                - Glob pattern to filter input files for parsing: **/*.yml
+--string          -s - Text string to parse
+--env             -e - If true will also interpolate from envrionment variables
+--params          -p - Stringified json object, or string of key,value pairs: key1=1,key2=2
+--warn            -w - If true will print out warnings for missing parameters
+--throw           -t - If true will throw errors for missing parameters
+--default         -d - What value to use as default when a parameter is not found
+--replace-missing -r - If false will not replace variables that are undefined
+--help            -h - Show this help message
 
 Examples:
 interpolate -i ./deploy -o ./build --src **/*.(yml|yaml)`;
 
-function getOptsFromArgv () {
+function runWithArgv () {
 
-    let res = {};
-    let argv = minimist(process.argv.slice(2));
-
-    let opts = {
+    let opts = util.optsFromArgv({
         input: 'i',
         output: 'o',
         src: null,
@@ -38,21 +36,11 @@ function getOptsFromArgv () {
         throw: 't',
         default: 'd',
         help: 'h',
-        regex: null
-    };
-
-    _.map(opts, (alias, key) => {
-        res[key] = alias ? argv[alias] !== undefined ? argv[alias] : argv[key] : argv[key];
+        regex: null,
+        replaceMissing: 'r'
     });
 
-    return res;
-
-}
-
-function runWithArgv () {
-
-    let opts = getOptsFromArgv();
-    let interpolator = new interpolate.Interpolator(opts);
+    let interpolator = new Interpolator(opts);
 
     if (opts.help) {
 
