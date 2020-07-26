@@ -12,6 +12,7 @@ Options:
 --output          -o - Directory to save output files
 --src                - Glob pattern to filter input files for parsing: **/*.yml
 --string          -s - Text string to parse
+--stdin              - Read from stdin
 --env             -e - If true will also interpolate from envrionment variables
 --params          -p - Stringified json object, or string of key,value pairs: key1=1,key2=2
 --warn            -w - If true will print out warnings for missing parameters
@@ -21,7 +22,8 @@ Options:
 --help            -h - Show this help message
 
 Examples:
-interpolate -i ./deploy -o ./build --src **/*.(yml|yaml)`;
+interpolate -i ./deploy -o ./build --src **/*.(yml|yaml)
+`;
 
 function runWithArgv () {
 
@@ -30,6 +32,7 @@ function runWithArgv () {
         output: 'o',
         src: null,
         string: 's',
+        stdin: null,
         env: 'e',
         params: 'p',
         warn: 'w',
@@ -44,16 +47,20 @@ function runWithArgv () {
 
     if (opts.help) {
 
-        console.log(help);
+        process.stdout.write(help);
 
     } else {
 
-        if (opts.string) {
-            console.log(interpolator.parseStr(opts.string));
+        if (opts.stdin) {
+            util.getStdin().then(str => {
+                process.stdout.write(interpolator.parseStr(str));
+            });
+        } else if (opts.string) {
+            process.stdout.write(interpolator.parseStr(opts.string));
         } else if (opts.input && opts.output) {
             interpolator.parseFile(opts.input, opts.output, opts.src);
         } else {
-            console.log(help);
+            process.stdout.write(help);
         }
 
     }

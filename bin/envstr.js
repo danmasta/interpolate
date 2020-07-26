@@ -17,23 +17,8 @@ Options:
 --help    -h - Show this help message
 
 Examples:
-envstr -s '{"KEY1":true,"KEY2":false}' --json --quotes`;
-
-function getStdin () {
-
-    let res = '';
-
-    process.stdin.on('data', chunk => {
-        res += chunk;
-    });
-
-    return new Promise((resolve, reject) => {
-        process.stdin.on('end', () => {
-            resolve(res);
-        });
-    });
-
-}
+envstr -s '{"KEY1":true,"KEY2":false}' --json --quotes
+`;
 
 function runWithArgv () {
 
@@ -51,26 +36,26 @@ function runWithArgv () {
 
     if (opts.help) {
 
-        console.log(help);
+        process.stdout.write(help);
 
     } else {
 
         if (opts.string) {
             if (opts.json) {
-                console.log(envstr.parseJsonStr(opts.string));
+                process.stdout.write(envstr.parseJsonStr(opts.string));
             } else {
-                console.log(envstr.parseTableStr(opts.string));
+                process.stdout.write(envstr.parseTableStr(opts.string));
             }
         } else if (opts.stdin) {
-            getStdin().then(str => {
+            util.getStdin().then(str => {
                 if (opts.json) {
-                    console.log(envstr.parseJsonStr(str));
+                    process.stdout.write(envstr.parseJsonStr(str));
                 } else {
-                    console.log(envstr.parseTableStr(str));
+                    process.stdout.write(envstr.parseTableStr(str));
                 }
             });
         } else {
-            console.log(help);
+            process.stdout.write(help);
         }
 
     }
