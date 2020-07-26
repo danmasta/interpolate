@@ -44,7 +44,7 @@
     "node": ">=8"
   },
   "dependencies": {
-    "@danmasta/walk": "^2.0.1",
+    "@danmasta/walk": "^3.0.1",
     "lodash": "^4.17.11",
     "minimist": "^1.2.0",
     "mkdirp": "^0.5.1"
