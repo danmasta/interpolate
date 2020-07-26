@@ -29,6 +29,7 @@ name | alias | type | description
 `output` | o | *`string`* | Directory to write parsed files to
 `src` |  | *`string`* | Glob pattern string to filter input file list, ex: `**/*.yml`
 `string` | s | *`string`* | Text string to parse
+`stdin` |  | *`boolean`* | Read input from stdin
 `env` | e | *`boolean`* | If true will also interpolate with environment variables. Default is `false`
 `params` | p | *`object\|string`* | Object of key,value pairs to use for parameter matching. If string, it should either be a stringified json object, or a comma-separated key,value list: `"key1=1,key2=2"`. Default is `null`
 `warn` | w | *`boolean`* | If true will write a message to `stderr` when a parameter is not found. Default is `true`
@@ -53,11 +54,11 @@ let params = {
 
 let string = '{{SRC_DIR}} -> {{BUILD_DIR}}';
 
-console.log(interpolator.parse(str, { params }));
+console.log(interpolate.parse(str, { params }));
 ```
 Parse a directory of files via cli
 ```bash
-interpolate --env -i ./deploy -o ./build --src **/*.(yml|yaml)
+interpolate --env -i deploy -o build/deploy --src **/*.(yml|yaml)
 ```
 
 ## Testing
