@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
-const _ = require('lodash');
-const EnvStr = require('../lib/envstr');
+const Envstr = require('../lib/envstr');
 const util = require('../lib/util');
 
 const help = `Usage:
@@ -14,6 +13,8 @@ Options:
 --key     -k - If input is json, parse data at specified key
 --quotes  -q - If true add quotes around env values
 --newline -n - Which character to use as newline delimeter. Default is '\\n'
+--include -i - Which keys to include in output: key1,key2
+--exclude -e - Which keys to exclude from output: key3,key4
 --help    -h - Show this help message
 
 Examples:
@@ -29,10 +30,12 @@ function runWithArgv () {
         key: 'k',
         quotes: 'q',
         newline: 'n',
+        include: 'i',
+        exclude: 'e',
         help: 'h'
     });
 
-    let envstr = new EnvStr(opts);
+    let envstr = new Envstr(opts);
 
     if (opts.help) {
 
@@ -41,12 +44,15 @@ function runWithArgv () {
     } else {
 
         if (opts.string) {
+
             if (opts.json) {
                 process.stdout.write(envstr.parseJsonStr(opts.string));
             } else {
                 process.stdout.write(envstr.parseTableStr(opts.string));
             }
+
         } else if (opts.stdin) {
+
             util.getStdin().then(str => {
                 if (opts.json) {
                     process.stdout.write(envstr.parseJsonStr(str));
@@ -54,6 +60,7 @@ function runWithArgv () {
                     process.stdout.write(envstr.parseTableStr(str));
                 }
             });
+
         } else {
             process.stdout.write(help);
         }
