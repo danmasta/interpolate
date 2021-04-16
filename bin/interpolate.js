@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
-const _ = require('lodash');
-const Interpolator = require('../lib/interpolator');
+const Interpolate = require('../lib/interpolate');
 const util = require('../lib/util');
 
 const help = `Usage:
@@ -43,7 +42,7 @@ function runWithArgv () {
         replaceMissing: 'r'
     });
 
-    let interpolator = new Interpolator(opts);
+    let interpolate = new Interpolate(opts);
 
     if (opts.help) {
 
@@ -52,13 +51,19 @@ function runWithArgv () {
     } else {
 
         if (opts.stdin) {
+
             util.getStdin().then(str => {
-                process.stdout.write(interpolator.parseStr(str));
+                process.stdout.write(interpolate.parseStr(str));
             });
+
         } else if (opts.string) {
-            process.stdout.write(interpolator.parseStr(opts.string));
+
+            process.stdout.write(interpolate.parseStr(opts.string));
+
         } else if (opts.input && opts.output) {
-            interpolator.parseFile(opts.input, opts.output, opts.src);
+
+            interpolate.parseFile(opts.input, opts.output, opts.src);
+
         } else {
             process.stdout.write(help);
         }
