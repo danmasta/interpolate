@@ -35,6 +35,9 @@ name | alias | type | description
 `warn` | w | *`boolean`* | If true will write a message to `stderr` when a parameter is not found. Default is `true`
 `throw` | t | *`boolean`* | If true will throw an error when a parameter is not found. Default is `false`
 `default` | d | *`string`* | Default value to use when a parameter is not found. Default is `''`
+`replaceMissing` | r | *`string`* | If false will not replace variables that are undefined. Default is `false`
+`format` | f | *`string`* | Enables or disables formatter functions. Default is `true`
+`delimiter` |  | *`string`* | What delimiter to use for parsing formatter names. Default is `'\|'`
 `help` | h | *`boolean`* | View the cli help menu
 
 ### Methods
@@ -57,6 +60,8 @@ name | alias | type | description
 `newline` | n | *`string`* | Which character to use as newline delimeter. Default is `'\n'`
 `include` | i | *`string`* | Which keys to include in output: `key1,key2`
 `exclude` | e | *`string`* | Which keys to exclude from output: `key3,key4`
+`caps` | c | *`string`* | If true capitalizes the output key name. Default is `false`
+`export` | x | *`string`* | If true adds the `'export'` keyword in front of each output key. Default is `false`
 `help` | h | *`boolean`* | View the cli help menu
 
 ## Examples
