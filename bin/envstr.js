@@ -15,6 +15,8 @@ Options:
 --newline -n - Which character to use as newline delimeter. Default is '\\n'
 --include -i - Which keys to include in output: key1,key2
 --exclude -e - Which keys to exclude from output: key3,key4
+--caps    -c - If true capitalizes the output key name
+--export  -x - If true adds the 'export' keyword in front of each output key
 --help    -h - Show this help message
 
 Examples:
@@ -32,7 +34,9 @@ function runWithArgv () {
         newline: 'n',
         include: 'i',
         exclude: 'e',
-        help: 'h'
+        help: 'h',
+        caps: 'c',
+        export: 'x'
     });
 
     let envstr = new Envstr(opts);
