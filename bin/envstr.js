@@ -8,7 +8,7 @@ envstr [...options]
 
 Options:
 --string  -s - Text string to parse
---stdin      - Read input from stdin
+--stdin    - - Read input from stdin
 --json    -j - Handle input as json
 --key     -k - If input is json, parse data at specified key
 --quotes  -q - If true add quotes around env values
@@ -27,7 +27,7 @@ function runWithArgv () {
 
     let opts = util.optsFromArgv({
         string: 's',
-        stdin: null,
+        stdin: '-',
         json: 'j',
         key: 'k',
         quotes: 'q',

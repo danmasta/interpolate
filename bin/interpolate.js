@@ -11,7 +11,7 @@ Options:
 --output          -o - Directory to save output files
 --src                - Glob pattern to filter input files for parsing: **/*.yml
 --string          -s - Text string to parse
---stdin              - Read input from stdin
+--stdin            - - Read input from stdin
 --env             -e - If true will also interpolate from envrionment variables
 --params          -p - Stringified json object, or string of key,value pairs: key1=1,key2=2
 --warn            -w - If true will print out warnings for missing parameters
@@ -33,7 +33,7 @@ function runWithArgv () {
         output: 'o',
         src: null,
         string: 's',
-        stdin: null,
+        stdin: '-',
         env: 'e',
         params: 'p',
         warn: 'w',
