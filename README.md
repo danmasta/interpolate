@@ -29,7 +29,7 @@ name | alias | type | description
 `output` | o | *`string`* | Directory to write parsed files to. Default is `undefined`
 `src` |  | *`string`* | Glob pattern string to filter input file list, ex: `**/*.yml`. Default is `undefined`
 `string` | s | *`string`* | Text string to parse. Default is `undefined`
-`stdin` |  | *`boolean`* | Read input from stdin. Default is `false`
+`stdin` | - | *`boolean`* | Read input from stdin. Default is `false`
 `env` | e | *`boolean`* | If true will also interpolate with environment variables. Default is `false`
 `params` | p | *`object\|string`* | Object of key,value pairs to use for parameter matching. If string, it should either be a stringified json object, or a comma-separated key,value list: `"key1=1,key2=2"`. Default is `undefined`
 `warn` | w | *`boolean`* | If true will write a message to `stderr` when a parameter is not found. Default is `true`
@@ -53,7 +53,7 @@ This package includes an extra cli utility called `envstr`. It formats json or t
 name | alias | type | description
 -----|-------|------|------------
 `string` | s | *`string`* | Text string to parse. Default is `undefined`
-`stdin` |  | *`boolean`* | Read input from stdin. Default is `undefined`
+`stdin` | - | *`boolean`* | Read input from stdin. Default is `undefined`
 `json` | j | *`boolean`* | Handle input as json. Default is `false`
 `key` | k | *`string`* | If input is json, parse data at specified key. Default is `undefined`
 `quotes` | q | *`boolean`* | If true add quotes around env values. Default is `false`
