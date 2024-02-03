@@ -18,7 +18,7 @@ Add interpolate as a dependency for your app and install via npm
 npm install @danmasta/interpolate --save
 ```
 Require the package in your app
-```javascript
+```js
 const interpolate = require('@danmasta/interpolate');
 ```
 
@@ -66,13 +66,13 @@ name | alias | type | description
 
 ## Examples
 Parse a text string
-```javascript
+```js
 let params = {
-    SRC_DIR: './src',
-    BUILD_DIR: './build'
+    SRC: './src',
+    BUILD: './build'
 };
 
-let str = '{{SRC_DIR}} -> {{BUILD_DIR}}';
+let str = 'input: {{SRC}} -> output: {{BUILD}}';
 
 console.log(interpolate(str, { params }));
 ```
@@ -86,7 +86,7 @@ envstr -s '{"KEY1":true,"KEY2":false}' --json --quotes
 ```
 
 ## Testing
-Testing is currently run using mocha and chai. To execute tests just run `npm run test`. To generate unit test coverage reports just run `npm run coverage`
+Tests are currently run using mocha and chai. To execute tests run `npm run test`. To generate unit test coverage reports run `npm run coverage`
 
 ## Contact
 If you have any questions feel free to get in touch
