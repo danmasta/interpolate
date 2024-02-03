@@ -23,7 +23,7 @@ Options:
 --help            -h - Show this help message
 
 Examples:
-interpolate -i ./deploy -o ./build --src **/*.(yml|yaml)
+interpolate -i ./deploy -o ./build/deploy --src **/*.(yml|yaml)
 `;
 
 function runWithArgv () {
