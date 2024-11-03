@@ -15,11 +15,11 @@ We needed a way to interpolate template variables from strings and files at buil
 ## Usage
 Add interpolate as a dependency for your app and install via npm
 ```
-npm install @danmasta/interpolate --save
+npm install interpolate@github:danmasta/interpolate --save
 ```
 Require the package in your app
 ```js
-const interpolate = require('@danmasta/interpolate');
+const interpolate = require('interpolate');
 ```
 
 ### Options
