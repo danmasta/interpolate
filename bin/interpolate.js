@@ -66,7 +66,7 @@ function runWithArgv () {
 
         } else if (opts.input && opts.output) {
 
-            // interpolate.parseFile(opts.input, opts.output, opts.src);
+            interpolate.parseFile(opts.input, opts.output, opts.src);
 
         } else {
             process.stdout.write(help);
