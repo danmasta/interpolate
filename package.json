@@ -1,7 +1,7 @@
 {
   "name": "@danmasta/interpolate",
   "private": true,
-  "version": "0.0.15",
+  "version": "0.0.16",
   "author": "Daniel Smith <dannmasta@gmail.com>",
   "description": "Simple string interpolation helper",
   "license": "MIT",
